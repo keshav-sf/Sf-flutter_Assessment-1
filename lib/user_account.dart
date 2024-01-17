@@ -1,71 +1,67 @@
 import 'package:flutter/material.dart';
-import 'package:sf_assessment1/starting_screen.dart';
 
 class UserAccount extends StatelessWidget {
   const UserAccount(this.logout, {super.key});
   final void Function() logout;
 
   void logoutAlert(context) {
-    showModalBottomSheet(
-        backgroundColor: Colors.blue[50],
-        context: context,
-        builder: (ctx) {
-          return Padding(
-            padding: const EdgeInsets.all(28.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text(
-                  "Do you want to Exit?",
-                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 15),
-                Row(
-                  children: [
-                    const Spacer(),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        textStyle: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text(
-                        "Cancel",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const SizedBox(width: 30),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurpleAccent,
-                        foregroundColor: Colors.white,
-                        textStyle: const TextStyle(
-                          fontWeight: FontWeight.w500,
-                          fontSize: 15,
-                        ),
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        logout();
-                      },
-                      child: const Text(
-                        "Yes",
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    const Spacer(),
-                  ],
-                )
-              ],
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.warning, color: Colors.red),
+            SizedBox(width: 5),
+            Text(
+              "Warning!",
+              style: TextStyle(color: Colors.red),
             ),
-          );
-        });
+          ],
+        ),
+        content: const Text(
+          "Do you really want to logout?",
+          style: TextStyle(fontSize: 16),
+        ),
+        actions: [
+          // const Spacer(),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text(
+              "Cancel",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+          ),
+          // const SizedBox(width: 5),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurpleAccent,
+              foregroundColor: Colors.white,
+              textStyle: const TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 15,
+              ),
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+              logout();
+            },
+            child: const Text(
+              "Yes",
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+            ),
+          ),
+          // const Spacer(),
+        ],
+      ),
+    );
   }
 
   @override

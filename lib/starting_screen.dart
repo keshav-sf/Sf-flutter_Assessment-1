@@ -38,7 +38,7 @@ class _StartingScreenState extends State<StartingScreen> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
             body: Container(
-                decoration: const BoxDecoration(
+                decoration: const BoxDecoration(  
                   gradient: LinearGradient(
                     colors: [
                       Color.fromRGBO(238, 189, 137, 1),
