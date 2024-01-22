@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage(this.start, {super.key});
+class Login extends StatelessWidget {
+  const Login(this.start, {super.key});
   final void Function() start;
 
   @override

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class UserAccount extends StatelessWidget {
-  const UserAccount(this.logout, {super.key});
+class Logout extends StatelessWidget {
+  const Logout(this.logout, {super.key});
   final void Function() logout;
 
   void logoutAlert(context) {
